@@ -1,0 +1,147 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{{ SITE_NAME }}</title>
+<meta name="keywords" content="{{ SITE_NAME }}" />
+<meta name="description" content="{{ SITE_DESC }}" />
+<link href="{% static 'css/base.css' %}" rel="stylesheet">
+<link href="{% static 'css/index.css'%}" rel="stylesheet">
+{% block custom_css %}{% endblock %}
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/sliders.js' %}"></script>
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+{% block custom_js %}{% endblock %}
+</head>
+<body>
+<header>
+  <div class="logo">
+      <h1>{{ SITE_NAME }}</h1>
+      <p>{{ SITE_DESC }}</p>
+  </div>
+  <nav id="topnav" class="f_r">
+    <ul>
+      <a href="/">首页</a>
+      {% for category in category_list %} 
+      <a href="{% url 'category' %}?cid={{ category.id }}" target="_blank">{{ category.name }}</a>
+      {% endfor %}
+    </ul>
+    <script src="{% static 'js/nav.js' %}"></script>
+  </nav>
+</header>
+<article>
+  <div class="l_box f_l">
+    {% block left_content %}{% endblock %}
+  </div>
+  <div class="r_box f_r">
+    <div class="tit01">
+      <h3>关注我</h3>
+      <div class="gzwm">
+        <ul>
+          <li><a class="xlwb" href="http://weibo.com/u/5621709378?is_all=1" target="_blank">新浪微博</a></li>
+
+          <li><a class="wx" href="mailto:1342181530@qq.com">邮箱</a></li>
+        </ul>
+      </div>
+    </div>
+    <!--tit01 end-->
+    <div class="moreSelect" id="lp_right_select">
+      <script>
+window.onload = function ()
+{
+  var oLi = document.getElementById("tab").getElementsByTagName("li");
+  var oUl = document.getElementById("ms-main").getElementsByTagName("div");
+
+  for(var i = 0; i < oLi.length; i++)
+  {
+    oLi[i].index = i;
+    oLi[i].onmouseover = function ()
+    {
+      for(var n = 0; n < oLi.length; n++) oLi[n].className="";
+      this.className = "cur";
+      for(var n = 0; n < oUl.length; n++) oUl[n].style.display = "none";
+      oUl[this.index].style.display = "block"
+    }
+  }
+}
+</script>
+      <div class="ms-top">
+        <ul class="hd" id="tab">
+          <li class="cur"><a href="/">浏览排行</a></li>
+          <li><a href="/">评论排行</a></li>
+          <li><a href="/">站长推荐</a></li>
+        </ul>
+      </div>
+      <div class="ms-main" id="ms-main">
+        <div style="display: block;" class="bd bd-news" >
+          <ul>
+            {% for article in click_article_list %}
+              <li>
+                  <a href="{% url 'article' %}?id={{ article.id }}" target="_blank">{{ article.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div  class="bd bd-news">
+          <ul>
+            {% for article in comment_article_list %}
+              <li><a href="{% url 'article' %}?id={{ article.id }}" target="_blank">{{ article.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="bd bd-news">
+          <ul>
+            {% for article in recommend_article_list %}
+              <li><a href="{% url 'article' %}?id={{ article.id }}" target="_blank">{{ article.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <!--ms-main end -->
+    </div>
+    <!--切换卡 moreSelect end -->
+
+    <div class="cloud">
+      <h3>标签云</h3>
+      <ul>
+        {% for tag in tag_list %}
+          <li><a href='{% url 'tag' %}?tag={{ tag.name }}'>{{ tag.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="tuwen">
+      <h3>文章归档</h3>
+      <ul>
+        {% for archive in archive_list %}
+        <li>
+          <p><span class="tutime font-size-18"><a href='{% url 'archive' %}?year={{ archive | slice:":4" }}&month={{ archive | slice:"5:7" }}'>{{ archive }}</a></span></p>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="links">
+      <h3>友情链接</h3>
+      <ul>
+        {% for link in link_list %}
+          <li><a href="{{ link.callback_url }}">{{ link.title }}</a></li>
+        {% endfor %}
+        <!-- <li><a href="/">web开发</a></li> -->
+        <!-- <li><a href="/">前端设计</a></li> -->
+        <!-- <li><a href="/">Html</a></li> -->
+        <!-- <li><a href="/">CSS3</a></li> -->
+        <!-- <li><a href="/">Html5+css3</a></li> -->
+        <!-- <li><a href="/">百度</a></li> -->
+      </ul>
+    </div>
+  </div>
+  <!--r_box end -->
+</article>
+<footer>
+  <p class="ft-copyright">小豆豆的个人博客 All Rights Reversed 湘ICP备17017608号</p>
+  <div id="tbox"> <a id="togbook" href="/"></a> <a id="gotop" href="javascript:void(0)"></a> </div>
+</footer>
+</body>
+</html>

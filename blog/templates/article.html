@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<!--需要加载自定义的过滤器-->
+{% load myfilter %}
+{% block left_content %}
+    <div class="postdate">
+      <!--这是自定义过滤器，获得大写月份,左边的值会先传给自定义的过滤器，然后经过滤器处理后再返回-->    
+      <div class="month">{{ article.date_publish | month_to_upper }}</div>
+      <div class="date">{{ article.date_publish | date:'d' }}</div>
+    </div>
+    <div class="title">
+        <h2><a href="" rel="bookmark" title="{{ article.title }}">{{ article.title }}</a></h2>
+        <div class="postmeta">
+        <span class="postmeta_author">{{ article.user.username }}</span>
+          <span class="postmeta_category"><a href="" rel="category">{{ article.category.name }}</a></span>
+          <!--这里使用了date过滤器修改格式-->
+          <span class="postmeta_time">{{ article.date_publish | date:'Y-m-d' }}</span>
+        </div>
+    </div>
+        <div class="entry">
+          <!--这里使用了安全方面的过滤器，出于数据安全要求，如果不用这个过滤器，会被进行转义成字符串.这个就是告诉django不需要过滤，数据很安全-->
+          {{ article.content | safe }}
+        </div>
+        <span class="tags">
+            {% for tag in article.tag.all %}
+            <a href='{% url 'tag' %}?tag={{ tag.name }}'>{{ tag.name }}</a>
+            {% endfor %}
+        </span>
+        <div class="info">
+        Address:  <a href="{{ SITE_URL }}article/?id={{ article.id }}" rel="bookmark" title="{{ article.title }}">{{ SITE_URL }}article/?id={{ article.id }}</a>
+        </div>
+      <div class="commentstitle"><h3 id="comments">到现在<span class="commentsnumber">有{{ length }}条评论</span></h3></div>
+
+      <ol class="commentlist">
+          <!--先遍历父级评论-->
+          {% for comment in comment_list %}
+          <li id="comment-59418">
+                <div class="top"><a href='{{ comment.url }}' rel='external nofollow' class='url'>{{ comment.username }}</a><span class="time"> @ <a href="#comment-59418" title="">{{ comment.date_publish | date:'Y-m-d H:i:s' }}</a></span></div>
+                <div><img alt='' src='{% static 'images/default.jpg' %}' class='avatar avatar-32 photo' height='32' width='32' /></div>
+                <div class="body">
+                                <p>{{ comment.content }}</p>
+                </div>
+          </li>
+          <!--如果父级评论有子评论，就把子评论输出-->
+          {% for children_comment in comment.children_comment %}
+          <li id="comment-59542">
+                <div class="reply">
+                  <div class="top"><a href="{{ children_comment.url }}" rel="external nofollow" class="url">{{ children_comment.username }}</a><span class="time"> @ <a href="#comment-59543" title="">{{ children_comment.date_publish | date:'Y-m-d H:i:s' }}</a></span></div>
+                  <div><img alt="" src="{% static 'images/default.jpg' %}" class="avatar avatar-32 photo" height="32" width="32"></div>
+
+                  <div class="body">
+                                        {{ children_comment.content }}                  </div>
+                </div>
+          </li>
+          {% endfor %}
+          {% endfor %}
+      </ol>
+
+    <div id="commentform">
+    <h3 id="respond">添加我的评论</h3>
+    <!--模板中调用方法判断是否登录-->
+    {% if not request.user.is_authenticated %}
+    <div class='login_info'>还没有登陆？可以登录后再评论哦。<b><a href="{% url 'login' %}">&raquo;去登录</a>&nbsp;<a href="{% url 'reg' %}">&raquo;去注册</a></b></div>
+    {% else %}
+    <div class='login_info'><b>{{ request.user.username }}</b>,快来写点评论吧!&nbsp;<a href="{% url 'logout' %}">注销</a></div>
+    {% endif %}
+    <!--post方式提交评论表单，django对于post方式会自动进行csrf验证-->
+    <form action="{% url 'comment_post' %}" method="post">
+    <!--所以要加上一个csrf标签，才能通过服务器验证，否则django会把它当做非法请求，出现403验证出错的页面-->
+    {% csrf_token %}
+    <p>{{ comment_form.author }}
+    <label for="author">Name (required)</label></p>
+
+    <p>{{ comment_form.email }}
+    <label for="email">Email (Will NOT be published) (required)</label></p>
+
+    <p>{{ comment_form.url }}
+    <label for="url">URL</label></p>
+
+
+    <!--<p><small><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code class=&quot;&quot; title=&quot;&quot; data-url=&quot;&quot;&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre class=&quot;&quot; title=&quot;&quot; data-url=&quot;&quot;&gt; &lt;span class=&quot;&quot; title=&quot;&quot; data-url=&quot;&quot;&gt; </small></p>-->
+
+    <p>{{ comment_form.comment }}</p>
+
+    <p>
+        {{ comment_form.article }}
+        <input name="submit" type="submit" id="submit" tabindex="5" value="Submit" class="button" />
+    </p>
+    </form>
+    </div>
+{% endblock %}

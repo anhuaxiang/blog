@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block left_content %} {% include 'ad.html' %}
+<div class="topnews">
+	<h2>标签：{{ request.GET.tag }}</h2> 
+	{% for article in article_list %}
+	<div class="blogs">
+		<ul>
+			<h3><a href="{% url 'article' %}?id={{ article.id }}" target="_blank">{{ article.title }}</a></h3>
+			<p>{{ article.desc }}</p>
+			<p class="autor">
+				{% for tag in article.tag.all %}
+				<span class="lm f_l">
+          			<a href='{% url 'tag' %}?tag={{ tag.name }}'>{{ tag.name }}</a>&nbsp;
+          		</span> {% endfor %}
+				<span class="dtime f_l">{{ article.date_publish | date:'Y-m-d'}}</span>
+				<span class="viewnum f_r">浏览（<a href="/">{{ article.click_count }}</a>）</span>
+				<span class="pingl f_r">评论（<a href="/">{{ article.comment_set.all.count }}</a>）</span>
+			</p>
+		</ul>
+	</div>
+	{% endfor %}
+</div>
+<div id="pagination">
+	<ul id="pagination-flickr">
+		{% if article_list.has_previous %}
+		<li class="previous"><a href="?page={{ article_list.previous_page_number }}">&laquo;上一页</a></li>
+		{% else %}
+		<li class="previous-off">&laquo;上一页</li>
+		{% endif %}
+		<li class="active">{{ article_list.number }}/{{ article_list.paginator.num_pages }}</li>
+		{% if article_list.has_next %}
+		<li class="next"><a href="?page={{ article_list.next_page_number }}">下一页 &raquo;</a></li>
+		{% else %}
+		<li class="next-off">下一页 &raquo;</li>
+		{% endif %}
+	</ul>
+</div>
+{% endblock %}
