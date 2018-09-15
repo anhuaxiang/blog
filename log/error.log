@@ -83,3 +83,15 @@
 2017-11-03 01:28:05,004 [Thread-79:140144464074496] [blog.views:88] [views:tag] [ERROR]- getPage() takes exactly 2 arguments (1 given)
 2017-11-03 01:28:05,066 [Thread-80:140144514430720] [blog.views:88] [views:tag] [ERROR]- getPage() takes exactly 2 arguments (1 given)
 2017-11-03 01:28:22,046 [Thread-97:140144514430720] [blog.views:88] [views:tag] [ERROR]- getPage() takes exactly 2 arguments (1 given)
+2018-09-15 17:10:20,205 [Thread-47:53736] [blog.views:152] [views:article] [ERROR]- 'bool' object is not callable
+2018-09-15 17:10:56,758 [Thread-54:44816] [blog.views:152] [views:article] [ERROR]- 'bool' object is not callable
+2018-09-15 17:11:21,199 [Thread-62:53528] [blog.views:152] [views:article] [ERROR]- 'bool' object is not callable
+2018-09-15 17:11:29,134 [Thread-63:53488] [blog.views:152] [views:article] [ERROR]- 'bool' object is not callable
+2018-09-15 17:13:46,721 [Thread-73:52472] [blog.views:91] [views:tag] [ERROR]- getPage() missing 1 required positional argument: 'article_list'
+2018-09-15 17:14:04,806 [Thread-74:50976] [blog.views:152] [views:article] [ERROR]- 'bool' object is not callable
+2018-09-15 17:14:08,360 [Thread-75:53656] [blog.views:152] [views:article] [ERROR]- 'bool' object is not callable
+2018-09-15 17:22:07,740 [Thread-147:55220] [blog.views:152] [views:article] [ERROR]- 'bool' object is not callable
+2018-09-15 17:23:41,974 [Thread-160:52512] [blog.views:152] [views:article] [ERROR]- 'bool' object is not callable
+2018-09-15 17:34:50,969 [Thread-40:48492] [blog.views:152] [views:article] [ERROR]- 'bool' object is not callable
+2018-09-15 17:34:50,973 [Thread-41:47420] [blog.views:152] [views:article] [ERROR]- 'bool' object is not callable
+2018-09-15 17:37:58,070 [Thread-70:44644] [blog.views:91] [views:tag] [ERROR]- getPage() missing 1 required positional argument: 'article_list'

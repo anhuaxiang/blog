@@ -1328,3 +1328,354 @@ TemplateSyntaxError: Invalid block tag on line 40: 'len(comment_list', expected 
 2017-11-03 01:27:07,573 [Thread-56:140144464074496] [django.request:152] [base:get_response] [WARNING]- Not Found: /uploads/kindeditor/2017/11/9715b1f2-bf1f-11e7-b5bf-525400351fbf.jpg
 2017-11-03 01:28:55,454 [Thread-104:140144464074496] [django.request:152] [base:get_response] [WARNING]- Not Found: /uploads/kindeditor/2017/11/ed0eb9da-bfdf-11e7-bf45-525400351fbf.jpg
 2017-11-03 01:28:55,459 [Thread-106:140144472467200] [django.request:152] [base:get_response] [WARNING]- Not Found: /uploads/kindeditor/2017/11/9715b1f2-bf1f-11e7-b5bf-525400351fbf.jpg
+2018-09-15 16:39:48,967 [Thread-2:41564] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "D:\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 241, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 212, in inner
+    if not self.has_permission(request):
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 186, in has_permission
+    return request.user.is_active and request.user.is_staff
+AttributeError: 'WSGIRequest' object has no attribute 'user'
+2018-09-15 16:40:52,457 [Thread-5:47528] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\work\blog\blog\views.py", line 65, in index
+    return render(request, 'index.html', locals())
+  File "D:\Python36\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python36\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Python36\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Python36\lib\site-packages\django\template\base.py", line 173, in render
+    with context.bind_template(self):
+  File "D:\Python36\lib\contextlib.py", line 82, in __enter__
+    return next(self.gen)
+  File "D:\Python36\lib\site-packages\django\template\context.py", line 250, in bind_template
+    updates.update(processor(self.request))
+  File "F:\work\blog\blog\views.py", line 32, in global_setting
+    archive_list = Article.objects.distinct_date()
+  File "F:\work\blog\blog\models.py", line 74, in distinct_date
+    date = date['date_publish'].strftime('%Y/%mÎÄµµ´æµµ')
+UnicodeEncodeError: 'locale' codec can't encode character '\u6587' in position 5: Illegal byte sequence
+2018-09-15 16:41:48,582 [Thread-2:51264] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\work\blog\blog\views.py", line 65, in index
+    return render(request, 'index.html', locals())
+  File "D:\Python36\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python36\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Python36\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Python36\lib\site-packages\django\template\base.py", line 173, in render
+    with context.bind_template(self):
+  File "D:\Python36\lib\contextlib.py", line 82, in __enter__
+    return next(self.gen)
+  File "D:\Python36\lib\site-packages\django\template\context.py", line 250, in bind_template
+    updates.update(processor(self.request))
+  File "F:\work\blog\blog\views.py", line 32, in global_setting
+    archive_list = Article.objects.distinct_date()
+  File "F:\work\blog\blog\models.py", line 74, in distinct_date
+    date = date['date_publish'].strftime('%Y/%mÎÄµµ´æµµ')
+UnicodeEncodeError: 'locale' codec can't encode character '\u6587' in position 5: Illegal byte sequence
+2018-09-15 16:41:49,058 [Thread-3:51272] [django.request:93] [base:get_response] [WARNING]- Not Found: /favicon.ico
+2018-09-15 16:41:51,693 [Thread-4:51276] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\work\blog\blog\views.py", line 65, in index
+    return render(request, 'index.html', locals())
+  File "D:\Python36\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python36\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Python36\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Python36\lib\site-packages\django\template\base.py", line 173, in render
+    with context.bind_template(self):
+  File "D:\Python36\lib\contextlib.py", line 82, in __enter__
+    return next(self.gen)
+  File "D:\Python36\lib\site-packages\django\template\context.py", line 250, in bind_template
+    updates.update(processor(self.request))
+  File "F:\work\blog\blog\views.py", line 32, in global_setting
+    archive_list = Article.objects.distinct_date()
+  File "F:\work\blog\blog\models.py", line 74, in distinct_date
+    date = date['date_publish'].strftime('%Y/%mÎÄµµ´æµµ')
+UnicodeEncodeError: 'locale' codec can't encode character '\u6587' in position 5: Illegal byte sequence
+2018-09-15 16:44:37,558 [Thread-7:51668] [django.request:93] [base:get_response] [WARNING]- Not Found: /admin
+2018-09-15 16:44:43,925 [Thread-8:50692] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "D:\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 241, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 212, in inner
+    if not self.has_permission(request):
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 186, in has_permission
+    return request.user.is_active and request.user.is_staff
+AttributeError: 'WSGIRequest' object has no attribute 'user'
+2018-09-15 16:45:04,950 [Thread-11:51308] [django.request:93] [base:get_response] [WARNING]- Not Found: /robots.txt
+2018-09-15 16:45:04,956 [Thread-10:51280] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\work\blog\blog\views.py", line 65, in index
+    return render(request, 'index.html', locals())
+  File "D:\Python36\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python36\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Python36\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Python36\lib\site-packages\django\template\base.py", line 173, in render
+    with context.bind_template(self):
+  File "D:\Python36\lib\contextlib.py", line 82, in __enter__
+    return next(self.gen)
+  File "D:\Python36\lib\site-packages\django\template\context.py", line 250, in bind_template
+    updates.update(processor(self.request))
+  File "F:\work\blog\blog\views.py", line 32, in global_setting
+    archive_list = Article.objects.distinct_date()
+  File "F:\work\blog\blog\models.py", line 74, in distinct_date
+    date = date['date_publish'].strftime('%Y/%mÎÄµµ´æµµ')
+UnicodeEncodeError: 'locale' codec can't encode character '\u6587' in position 5: Illegal byte sequence
+2018-09-15 16:46:34,183 [Thread-2:51088] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\work\blog\blog\views.py", line 65, in index
+    return render(request, 'index.html', locals())
+  File "D:\Python36\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python36\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Python36\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Python36\lib\site-packages\django\template\base.py", line 173, in render
+    with context.bind_template(self):
+  File "D:\Python36\lib\contextlib.py", line 82, in __enter__
+    return next(self.gen)
+  File "D:\Python36\lib\site-packages\django\template\context.py", line 250, in bind_template
+    updates.update(processor(self.request))
+  File "F:\work\blog\blog\views.py", line 32, in global_setting
+    archive_list = Article.objects.distinct_date()
+  File "F:\work\blog\blog\models.py", line 74, in distinct_date
+    date = date['date_publish'].strftime('%Y/%mÎÄµµ´æµµ'.encode('utf-8'))
+TypeError: strftime() argument 1 must be str, not bytes
+2018-09-15 16:46:36,867 [Thread-3:25416] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\work\blog\blog\views.py", line 65, in index
+    return render(request, 'index.html', locals())
+  File "D:\Python36\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python36\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Python36\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Python36\lib\site-packages\django\template\base.py", line 173, in render
+    with context.bind_template(self):
+  File "D:\Python36\lib\contextlib.py", line 82, in __enter__
+    return next(self.gen)
+  File "D:\Python36\lib\site-packages\django\template\context.py", line 250, in bind_template
+    updates.update(processor(self.request))
+  File "F:\work\blog\blog\views.py", line 32, in global_setting
+    archive_list = Article.objects.distinct_date()
+  File "F:\work\blog\blog\models.py", line 74, in distinct_date
+    date = date['date_publish'].strftime('%Y/%mÎÄµµ´æµµ'.encode('utf-8'))
+TypeError: strftime() argument 1 must be str, not bytes
+2018-09-15 16:47:29,161 [Thread-2:51300] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\work\blog\blog\views.py", line 65, in index
+    return render(request, 'index.html', locals())
+  File "D:\Python36\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Python36\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Python36\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Python36\lib\site-packages\django\template\base.py", line 173, in render
+    with context.bind_template(self):
+  File "D:\Python36\lib\contextlib.py", line 82, in __enter__
+    return next(self.gen)
+  File "D:\Python36\lib\site-packages\django\template\context.py", line 250, in bind_template
+    updates.update(processor(self.request))
+  File "F:\work\blog\blog\views.py", line 32, in global_setting
+    archive_list = Article.objects.distinct_date()
+  File "F:\work\blog\blog\models.py", line 74, in distinct_date
+    date = date['date_publish'].strftime('%Y/%msave'.encode('utf-8'))
+TypeError: strftime() argument 1 must be str, not bytes
+2018-09-15 16:47:47,789 [Thread-21:52068] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "D:\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 241, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 212, in inner
+    if not self.has_permission(request):
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 186, in has_permission
+    return request.user.is_active and request.user.is_staff
+AttributeError: 'WSGIRequest' object has no attribute 'user'
+2018-09-15 16:54:52,020 [Thread-2:52412] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "D:\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 241, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 212, in inner
+    if not self.has_permission(request):
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 186, in has_permission
+    return request.user.is_active and request.user.is_staff
+AttributeError: 'WSGIRequest' object has no attribute 'user'
+2018-09-15 16:55:02,048 [Thread-8:52732] [django.request:93] [base:get_response] [WARNING]- Not Found: /admin
+2018-09-15 16:55:14,304 [Thread-2:53220] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /admin
+Traceback (most recent call last):
+  File "D:\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 241, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 212, in inner
+    if not self.has_permission(request):
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 186, in has_permission
+    return request.user.is_active and request.user.is_staff
+AttributeError: 'WSGIRequest' object has no attribute 'user'
+2018-09-15 16:56:57,329 [Thread-2:53484] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /admin
+Traceback (most recent call last):
+  File "D:\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 241, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 212, in inner
+    if not self.has_permission(request):
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 186, in has_permission
+    return request.user.is_active and request.user.is_staff
+AttributeError: 'WSGIRequest' object has no attribute 'user'
+2018-09-15 16:59:06,117 [Thread-2:48920] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /admin
+Traceback (most recent call last):
+  File "D:\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 241, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 212, in inner
+    if not self.has_permission(request):
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 186, in has_permission
+    return request.user.is_active and request.user.is_staff
+AttributeError: 'WSGIRequest' object has no attribute 'user'
+2018-09-15 16:59:24,390 [Thread-3:53744] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /admin
+Traceback (most recent call last):
+  File "D:\Python36\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Python36\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 241, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\utils\decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 212, in inner
+    if not self.has_permission(request):
+  File "D:\Python36\lib\site-packages\django\contrib\admin\sites.py", line 186, in has_permission
+    return request.user.is_active and request.user.is_staff
+AttributeError: 'WSGIRequest' object has no attribute 'user'
+2018-09-15 17:00:45,443 [Thread-13:54252] [django.request:93] [base:get_response] [WARNING]- Not Found: /robots.txt
+2018-09-15 17:10:50,690 [Thread-53:54092] [django.request:93] [base:get_response] [WARNING]- Not Found: /robots.txt
+2018-09-15 17:17:53,065 [Thread-96:53728] [django.request:93] [base:get_response] [WARNING]- Not Found: /robots.txt
+2018-09-15 17:22:07,692 [Thread-148:44544] [django.request:93] [base:get_response] [WARNING]- Not Found: /robots.txt
+2018-09-15 17:34:40,144 [Thread-26:55060] [django.request:93] [base:get_response] [WARNING]- Not Found: /favicon.ico
+2018-09-15 17:34:54,207 [Thread-59:55068] [django.request:93] [base:get_response] [WARNING]- Not Found: /favicon.ico

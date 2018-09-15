@@ -113,7 +113,7 @@ venv.bak/
 *.rdb
 
 # logs
-log/
+/log/*
 /log/all/*
 !/log/all/.gitkeep
 /log/error/*.*
