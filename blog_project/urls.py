@@ -15,18 +15,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import include, url
+from django.urls import path
 import django
 from django.contrib import admin
 from django.conf import settings
 from blog.upload import upload_image
+from django.views.static import serve
 
 urlpatterns = [
     # 映射到管理界面
-    url(r'^admin/', include(admin.site.urls)),
+    path('admin', admin.site.urls),
     # 配置用于处理图片上传的url映射
     url(r"^uploads/(?P<path>.*)$",
         # django.views.static.serve专门用于处理静态文件
-        django.views.static.serve,
+        serve,
         # 这里用到了settings中配置好的路径MEDIA_ROOT
         {"document_root": settings.MEDIA_ROOT, }),
     # 用于映射富文本编辑器的图片上传
