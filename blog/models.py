@@ -48,9 +48,8 @@ class User(AbstractUser):
     # 可以为空
     qq = models.CharField(max_length=20, blank=True, null=True, verbose_name='QQ号码')
     # 不能重复
-    mobile = models.CharField(max_length=11, \
-                              blank=True, null=True, unique=True, verbose_name='手机号码')
-	# 新增字段
+    mobile = models.CharField(max_length=11, blank=True, null=True, unique=True, verbose_name='手机号码')
+    # 新增字段
     url = models.URLField(max_length=100, blank=True, null=True, verbose_name='个人网页地址')
 
     class Meta:
@@ -72,7 +71,7 @@ class ArticleManager(models.Manager):
         date_list = self.values('date_publish')
         for date in date_list:
             # 取出的日期先转换格式
-            date = date['date_publish'].strftime('%Y/%m文档存档')
+            date = date['date_publish'].strftime('%Y/%m')
             if date not in distinct_date_list:
                 distinct_date_list.append(date)
         return distinct_date_list
@@ -86,9 +85,9 @@ class Article(models.Model):
     click_count = models.IntegerField(default=0, verbose_name='点击次数')
     is_recommend = models.BooleanField(default=False, verbose_name='是否推荐')
     date_publish = models.DateTimeField(auto_now_add=True, verbose_name='发布时间')
-    user = models.ForeignKey(User, verbose_name='用户')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='用户')
     # 外键
-    category = models.ForeignKey(Category, blank=True, null=True, verbose_name='分类')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True, verbose_name='分类')
     # 多对多关系将会自动多生成一张表，blog_article_tag
     tag = models.ManyToManyField(Tag, verbose_name='标签')
     # 在文章模型中加入自定义的管理器
@@ -133,9 +132,9 @@ class Comment(models.Model):
     url = \
         models.URLField(max_length=100, blank=True, null=True, verbose_name='个人网页地址')
     date_publish = models.DateTimeField(auto_now_add=True, verbose_name='发布时间')
-    user = models.ForeignKey(User, blank=True, null=True, verbose_name='用户')
-    article = models.ForeignKey(Article, related_name="entries", blank=True, null=True, verbose_name='文章')
-    pid = models.ForeignKey('self', blank=True, null=True, verbose_name='父级评论')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, verbose_name='用户')
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="entries", blank=True, null=True, verbose_name='文章')
+    pid = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True, verbose_name='父级评论')
     # 使用自定义的管理器
     objects = CommentManager()
 
