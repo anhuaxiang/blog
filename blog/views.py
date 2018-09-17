@@ -139,7 +139,7 @@ def article(request):
             for item in comment_list:
                 if not hasattr(item, 'children_comment'):
                     setattr(item, 'children_comment', [])
-                # 如果父级评论非空且和某条评论相等，那就说明该评论是父评论，加入到子评论列表中
+                # 如果父级评论非空且和某条评论相 等，那就说明该评论是父评论，加入到子评论列表中
                 if comment.pid == item:
                     item.children_comment.append(comment)
                     break
