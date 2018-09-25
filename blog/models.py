@@ -19,6 +19,9 @@ class Tag(models.Model):
         # 必须返回字符串类型，str(self.id)
         return self.name
 
+    def __str__(self):
+        return self.name
+
 
 # 文章分类
 class Category(models.Model):
@@ -33,6 +36,9 @@ class Category(models.Model):
         ordering = ['index', 'id']
 
     def __unicode__(self):
+        return self.name
+
+    def __str__(self):
         return self.name
 
 
@@ -58,6 +64,9 @@ class User(AbstractUser):
         ordering = ['-id']
 
     def __unicode__(self):
+        return self.username
+
+    def __str__(self):
         return self.username
 
 
@@ -99,6 +108,9 @@ class Article(models.Model):
         ordering = ['-date_publish']
 
     def __unicode__(self):
+        return self.title
+
+    def __str__(self):
         return self.title
 
 
@@ -147,6 +159,9 @@ class Comment(models.Model):
     def __unicode__(self):
         return self.content
 
+    def __str__(self):
+        return self.content
+
 
 # 友情链接
 class Links(models.Model):
@@ -162,6 +177,9 @@ class Links(models.Model):
         ordering = ['index', 'id']
 
     def __unicode__(self):
+        return self.title
+
+    def __str__(self):
         return self.title
 
 
