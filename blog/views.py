@@ -125,11 +125,10 @@ def article(request):
         # 这里初始化了一个评论表单的对象供article.html使用。
         # 这个是用于分别处理登陆情况和未登录情况下默认写入哪些值，提高用户体验
         comment_form = CommentForm({
-                                       'author': request.user.username,
-                                       'email': request.user.email,
-                                       'url': request.user.url,
-                                       'article': id} if request.user.
-                                   is_authenticated() else{'article': id})
+                                    'author': request.user.username,
+                                    'email': request.user.email,
+                                    'url': request.user.url,
+                                    'article': id} if request.user.is_authenticated else {'article': id})
         # 获取评论信息
         # 注意这个技巧：用一行把文章对应的评论都取出来之后对结果进行归类，只取一次，推荐
         comments = Comment.objects.filter(article=article).order_by('id')
@@ -168,7 +167,7 @@ def comment_post(request):
                 content=comment_form.cleaned_data["comment"],
                 article_id=comment_form.cleaned_data["article"],
                 # 用django的user类提供的方法来验证是否登录，是就返回用户，否则返回匿名对象
-                user=request.user if request.user.is_authenticated() else None)
+                user=request.user if request.user.is_authenticated else None)
             comment.save()
         else:
             # 没通过就写入error，主要是清除session
