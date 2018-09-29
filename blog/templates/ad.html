@@ -3,7 +3,7 @@
       <div id="slide-holder">
         <div id="slide-runner">
           {% for ad in ad_list %}
-          <a href="{{ ad.callback_url }}" target="_blank"><img id="{{ ad.id }}" src="{{ SITE_URL }}uploads/{{ ad.image_url }}" alt="{{ ad.description }}" /></a>
+          <a href="{{ ad.callback_url }}" target="_blank"><img id="{{ ad.id }}" src="/uploads/{{ ad.image_url }}" alt="{{ ad.description }}" /></a>
           {% endfor %} 
           <div id="slide-controls">
             <p id="slide-client" class="text"><strong></strong><span></span></p>
