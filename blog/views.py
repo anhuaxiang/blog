@@ -117,6 +117,8 @@ def article(request):
         try:
             # 获取文章信息
             article = Article.objects.get(pk=id)
+            article.click_count += 1
+            article.save()
         # 注意捕获文章不存在的异常
         except Article.DoesNotExist:
             return render(request, 'failure.html', {'reason': '没有找到对应的文章'})
