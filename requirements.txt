@@ -1,2 +1,6 @@
 django
 pymysql
+pillow
+django-extensions
+django-werkzeug-debugger-runserver
+pyOpenSSL
