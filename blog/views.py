@@ -36,7 +36,7 @@ def global_setting(request):
     # 友情链接数据
     link_list = Links.objects.all()
     # 文章排行榜数据-按点击排序,模板只要求取前6个
-    click_article_list = article_list.order_by('click_count')[:6]
+    click_article_list = article_list.order_by('-click_count')[:6]
     # 文章排行榜数据-按评论排序
     comment_article_list = []
     result_list = Comment.objects.with_counts()
