@@ -97,7 +97,7 @@ def tag(request):
 
 def getPage(request, article_list):
     # pdb.set_trace()
-    paginator = Paginator(article_list, 5)
+    paginator = Paginator(article_list, 10)
     try:
         page = int(request.GET.get('page', 1))
         article_list = paginator.page(page)
