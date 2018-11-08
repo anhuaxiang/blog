@@ -18,4 +18,5 @@ urlpatterns = [
     url(r'^logout$', do_logout, name='logout'),
     url(r'^login$', do_login, name='login'),
     url(r'^reg$', do_reg, name='reg'),
+    url(r'^search/$', search, name="search"),
 ]

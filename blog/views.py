@@ -13,6 +13,7 @@ from blog.forms import *
 # django的重量级体现，登录注册直接提供封装好的类
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.hashers import make_password
+from django.http import HttpResponse
 
 # 使用setting.py中配置的日志器，一般都在views.py中使用日志器，因为这里都是业务逻辑
 logger = logging.getLogger('blog.views')
@@ -277,3 +278,15 @@ def category(request):
     except Exception as e:
         logger.error(e)
     return render(request, 'category.html', locals())
+
+
+def search(request):
+    print("****************")
+    search_content = request.POST.get("search")
+    try:
+        # pdb.set_trace()
+        article_list = Article.objects.filter(title__icontains=search_content)
+        article_list = getPage(request, article_list)
+    except Exception as e:
+        logger.error(e)
+    return render(request, 'index.html', locals())
