@@ -128,4 +128,5 @@ venv.bak/
 # email config file
 config/email_config.json
 
-
+# sql
+*.sql
