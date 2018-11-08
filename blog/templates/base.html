@@ -28,6 +28,13 @@
       {% for category in category_list %} 
       <a href="{% url 'category' %}?cid={{ category.id }}" target="_blank">{{ category.name }}</a>
       {% endfor %}
+        <div style="background: #48AE15;">
+          <form method="post" action="{% url 'search' %}" style="height: 44px">
+            {% csrf_token %}
+            <input type="search" name="search" placeholder="请输入关键词..." style="color: #98BC00; height: 40px; margin-top: 0px; margin-bottom: 0px" required >
+            <button type="submit" style="background: #48AE15; height: 40px; width: 35px; margin-top: 0px; margin-bottom: 0px">搜索</button>
+          </form>
+    </div>
     </ul>
     <script src="{% static 'js/nav.js' %}"></script>
   </nav>
