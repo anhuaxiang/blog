@@ -158,6 +158,9 @@ def article(request):
 # 提交评论
 # @csrf_exemp 如果不想进行csrf验证，可以加上这个装饰器，告诉django不需要进行验证
 def comment_post(request):
+    if not request.user.is_authenticated:
+        login_form = LoginForm()
+        return render(request, 'login.html', locals())
     try:
         comment_form = CommentForm(request.POST)
         # 先对表单信息进行验证，通过后才获取信息
