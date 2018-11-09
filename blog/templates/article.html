@@ -30,15 +30,15 @@
         Address:  <a href="{{ SITE_URL }}article/?id={{ article.id }}" rel="bookmark" title="{{ article.title }}">{{ SITE_URL }}article/?id={{ article.id }}</a>
         </div>
       <div class="commentstitle"><h3 id="comments">到现在<span class="commentsnumber">有{{ length }}条评论</span></h3></div>
-
-      <ol class="commentlist">
+    <h3>
+        <ol class="commentlist">
           <!--先遍历父级评论-->
           {% for comment in comment_list %}
           <li id="comment-59418">
                 <div class="top"><a href='{{ comment.url }}' rel='external nofollow' class='url'>{{ comment.username }}</a><span class="time"> @ <a href="#comment-59418" title="">{{ comment.date_publish | date:'Y-m-d H:i:s' }}</a></span></div>
                 <div><img alt='' src='{% static 'images/default.jpg' %}' class='avatar avatar-32 photo' height='32' width='32' /></div>
                 <div class="body">
-                                <p>{{ comment.content }}</p>
+                                <p>&nbsp &nbsp{{ comment.content }}</p>
                 </div>
           </li>
           <!--如果父级评论有子评论，就把子评论输出-->
@@ -49,12 +49,14 @@
                   <div><img alt="" src="{% static 'images/default.jpg' %}" class="avatar avatar-32 photo" height="32" width="32"></div>
 
                   <div class="body">
-                                        {{ children_comment.content }}                  </div>
+                                        &nbsp &nbsp{{ children_comment.content }}                  </div>
                 </div>
           </li>
           {% endfor %}
           {% endfor %}
       </ol>
+    </h3>
+
 
     <div id="commentform">
     <h3 id="respond">添加我的评论</h3>
