@@ -5,3 +5,4 @@
     2. 在settings.py文件中更改数据库的用户名及密码  
     3. 在settings.py文件中添加ALLOWED_HOSTS  
     4. python manage.py runserver 0.0.0.0:80 运行  
+### 效果地址：https://anhuaxiang.cn
