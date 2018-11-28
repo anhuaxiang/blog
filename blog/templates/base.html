@@ -92,7 +92,7 @@ window.onload = function ()
           <ul>
             {% for article in click_article_list %}
               <li>
-                  <a href="{% url 'article' %}?id={{ article.id }}" target="_blank">{{ article.title }}</a>
+                  <a href="{% url 'article' %}?id={{ article.id }}">{{ article.title }}</a>
               </li>
             {% endfor %}
           </ul>
@@ -100,14 +100,14 @@ window.onload = function ()
         <div  class="bd bd-news">
           <ul>
             {% for article in comment_article_list %}
-              <li><a href="{% url 'article' %}?id={{ article.id }}" target="_blank">{{ article.title }}</a></li>
+              <li><a href="{% url 'article' %}?id={{ article.id }}">{{ article.title }}</a></li>
             {% endfor %}
           </ul>
         </div>
         <div class="bd bd-news">
           <ul>
             {% for article in recommend_article_list %}
-              <li><a href="{% url 'article' %}?id={{ article.id }}" target="_blank">{{ article.title }}</a></li>
+              <li><a href="{% url 'article' %}?id={{ article.id }}">{{ article.title }}</a></li>
             {% endfor %}
           </ul>
         </div>
