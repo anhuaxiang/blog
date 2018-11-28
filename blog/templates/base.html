@@ -27,7 +27,7 @@
     <ul>
       <a href="/">首页</a>
       {% for category in category_list %} 
-      <a href="{% url 'category' %}?cid={{ category.id }}" target="_blank">{{ category.name }}</a>
+      <a href="{% url 'category' %}?cid={{ category.id }}">{{ category.name }}</a>
       {% endfor %}
         <div style="background: #48AE15; display: inline-block; margin : 0 0 0 38px;">
           <form method="post" action="{% url 'search' %}" style="height: 44px">
